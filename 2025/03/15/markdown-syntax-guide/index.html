@@ -89,230 +89,94 @@
 
   <!-- Main Content -->
   <main class="main-container" id="mainContent">
-    <!-- Hero Section -->
-<section class="hero-section">
-  <div class="hero-content">
-    <div class="hero-glitch-title">
-      <h1 class="hero-title" data-text="Night City Terminal">Night City Terminal</h1>
-    </div>
-    <p class="hero-subtitle">WAKE UP, SAMURAI</p>
-    <p class="hero-description">We got a city to burn.</p>
-
-    <!-- Hero Stats Bar -->
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-icon">◈</span>
-        <span class="hero-stat-value">3</span>
-        <span class="hero-stat-label">ARTICLES</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-icon">◈</span>
-        <span class="hero-stat-value">8</span>
-        <span class="hero-stat-label">TAGS</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-icon">◈</span>
-        <span class="hero-stat-value" id="dayCount">0</span>
-        <span class="hero-stat-label">DAYS ONLINE</span>
-      </div>
-    </div>
-
-    <!-- CTA -->
-    <div class="hero-cta">
-      <a href="/suko-mublog/archives" class="cyber-btn primary">
-        <span class="cyber-btn-text">进入博客</span>
-        <span class="cyber-btn-glitch" data-text="进入博客">进入博客</span>
-      </a>
-      <a href="/suko-mublog/about" class="cyber-btn secondary">
-        <span class="cyber-btn-text">关于我</span>
-      </a>
-    </div>
-  </div>
-
-  <!-- Hero Decorative -->
-  <div class="hero-deco">
-    <div class="hero-circle"></div>
-    <div class="hero-lines">
-      <div class="hline hline-1"></div>
-      <div class="hline hline-2"></div>
-      <div class="hline hline-3"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Recent Posts -->
-<section class="section-container">
-  <div class="section-header">
-    <h2 class="section-title">
-      <span class="section-title-bracket">[</span>
-      <span class="section-title-text">最新文章</span>
-      <span class="section-title-bracket">]</span>
-    </h2>
-    <a href="/suko-mublog/archives" class="section-more">查看全部 →</a>
-  </div>
-
-  <div class="posts-grid">
     
-      <article class="post-card cyber-card">
-        <div class="post-card-header">
-          <span class="post-date">
-            <span class="post-date-icon">◷</span>
-            2025-04-20
-          </span>
-          
-            <span class="post-category">
-              技术
-            </span>
-          
-        </div>
-        <h3 class="post-card-title">
-          <a href="/suko-mublog/2025/04/20/xray-proxy-setup/">Xray VLESS+Reality 代理搭建记录</a>
-        </h3>
-        <p class="post-card-excerpt">
-          记录一下最近在 Vultr VPS 上搭建 Xray VLESS+Reality 代理的全过程。
-为什么选择 VLESS+Reality传统的 VMess+WS 方案已经被识别得差不多了，Reality 协议的优势在于：
+  <div class="page-container cyber-card">
+    <div class="page-header">
+      <h1 class="page-title">
+        <span class="page-title-icon">◈</span>
+        Markdown 语法测试
+      </h1>
+    </div>
+    <div class="page-content">
+      <p>这篇文章用来测试博客主题对各种 Markdown 语法的渲染效果。</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>H1 到 H6 的标题层级。</p>
+<h3 id="段落与换行"><a href="#段落与换行" class="headerlink" title="段落与换行"></a>段落与换行</h3><p>这是第一段。</p>
+<p>这是第二段，中间有空行分隔。</p>
+<h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><ul>
+<li><strong>粗体文本</strong></li>
+<li><em>斜体文本</em></li>
+<li><em><strong>粗斜体</strong></em></li>
+<li><del>删除线</del></li>
+</ul>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>无序列表：</p>
+<ul>
+<li>项目一</li>
+<li>项目二<ul>
+<li>子项目 A</li>
+<li>子项目 B</li>
+</ul>
+</li>
+<li>项目三</li>
+</ul>
+<p>有序列表：</p>
+<ol>
+<li>第一步</li>
+<li>第二步</li>
+<li>第三步</li>
+</ol>
+<h3 id="链接和图片"><a href="#链接和图片" class="headerlink" title="链接和图片"></a>链接和图片</h3><p><a target="_blank" rel="noopener" href="https://suko.online/">这是链接</a></p>
+<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><blockquote>
+<p>“I’ll live twice as much in half the time.”<br>— David Martinez</p>
+</blockquote>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>行内代码：<code>console.log(&#39;Night City&#39;)</code></p>
+<p>代码块：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">edgerunner</span>(<span class="params">name</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Welcome to the edge, <span class="subst">$&#123;name&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">status</span>: <span class="string">&#x27;alive&#x27;</span>,</span><br><span class="line">    <span class="attr">city</span>: <span class="string">&#x27;Night City&#x27;</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-不需要域名和证书
-伪装成正常 HTTPS 流量
-指纹识别难度极高
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><table>
+<thead>
+<tr>
+<th>角色</th>
+<th>势力</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>David</td>
+<td>Edgerunners</td>
+<td>已故</td>
+</tr>
+<tr>
+<td>Lucy</td>
+<td>Edgerunners</td>
+<td>存活</td>
+</tr>
+<tr>
+<td>Rebecca</td>
+<td>Edgerunners</td>
+<td>已故</td>
+</tr>
+<tr>
+<td>Maine</td>
+<td>Edgerunners</td>
+<td>已故</td>
+</tr>
+</tbody></table>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><hr>
+<h2 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h2><h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><p>这是一个脚注的例子<a href="%E8%84%9A%E6%B3%A8%E5%86%85%E5%AE%B9%E5%9C%A8%E8%BF%99%E9%87%8C%E3%80%82">^1</a>。</p>
+<h3 id="任务列表"><a href="#任务列表" class="headerlink" title="任务列表"></a>任务列表</h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 搭建博客</li>
+<li><input checked="" disabled="" type="checkbox"> 设计主题</li>
+<li><input disabled="" type="checkbox"> 写更多文章</li>
+<li><input disabled="" type="checkbox"> 部署上线</li>
+</ul>
+<h3 id="数学公式（如果支持）"><a href="#数学公式（如果支持）" class="headerlink" title="数学公式（如果支持）"></a>数学公式（如果支持）</h3><p>行内公式：$E &#x3D; mc^2$</p>
+<h3 id="高亮"><a href="#高亮" class="headerlink" title="高亮"></a>高亮</h3><p>&#x3D;&#x3D;这是高亮文本&#x3D;&#x3D;（部分渲染器支持）</p>
+<hr>
+<p>以上就是常用的 Markdown 语法测试，确保主题能正确渲染所有元素。</p>
 
-环境信息...
-        </p>
-        <div class="post-card-footer">
-          <div class="post-tags">
-            
-              
-                <a href="/suko-mublog/tags/%E4%BB%A3%E7%90%86/" class="post-tag">#代理</a>
-              
-                <a href="/suko-mublog/tags/VPS/" class="post-tag">#VPS</a>
-              
-                <a href="/suko-mublog/tags/%E7%BD%91%E7%BB%9C/" class="post-tag">#网络</a>
-              
-            
-          </div>
-          <a href="/suko-mublog/2025/04/20/xray-proxy-setup/" class="post-read-more">READ MORE →</a>
-        </div>
-      </article>
-    
-      <article class="post-card cyber-card">
-        <div class="post-card-header">
-          <span class="post-date">
-            <span class="post-date-icon">◷</span>
-            2025-03-15
-          </span>
-          
-            <span class="post-category">
-              技术
-            </span>
-          
-        </div>
-        <h3 class="post-card-title">
-          <a href="/suko-mublog/2025/03/15/markdown-syntax-guide/">Markdown 语法测试</a>
-        </h3>
-        <p class="post-card-excerpt">
-          这篇文章用来测试博客主题对各种 Markdown 语法的渲染效果。
-基础语法标题H1 到 H6 的标题层级。
-段落与换行这是第一段。
-这是第二段，中间有空行分隔。
-强调
-粗体文本
-斜体文本
-粗斜体
-删除线
-
-列表无序列表：
-
-项目一
-项目二
-子项目 A
-子项目 B
-
-
-项目三
-
-有序列表：
-
-第一步...
-        </p>
-        <div class="post-card-footer">
-          <div class="post-tags">
-            
-              
-                <a href="/suko-mublog/tags/Markdown/" class="post-tag">#Markdown</a>
-              
-                <a href="/suko-mublog/tags/%E6%B5%8B%E8%AF%95/" class="post-tag">#测试</a>
-              
-            
-          </div>
-          <a href="/suko-mublog/2025/03/15/markdown-syntax-guide/" class="post-read-more">READ MORE →</a>
-        </div>
-      </article>
-    
-      <article class="post-card cyber-card">
-        <div class="post-card-header">
-          <span class="post-date">
-            <span class="post-date-icon">◷</span>
-            2025-01-01
-          </span>
-          
-            <span class="post-category">
-              日记
-            </span>
-          
-        </div>
-        <h3 class="post-card-title">
-          <a href="/suko-mublog/2024/12/31/hello-world/">欢迎来到夜之城</a>
-        </h3>
-        <p class="post-card-excerpt">
-          
-“Welcome to Night City.” — Narrator
-
-这是我的赛博朋克风格博客的第一篇文章。
-在这个博客里，我会分享一些关于技术、生活、以及各种有趣事物的思考。
-关于这个博客这个博客使用 Hexo 搭建，主题是完全自定义的 Edgerunners 主题，灵感来自《赛博朋克：边缘...
-        </p>
-        <div class="post-card-footer">
-          <div class="post-tags">
-            
-              
-                <a href="/suko-mublog/tags/%E9%9A%8F%E7%AC%94/" class="post-tag">#随笔</a>
-              
-                <a href="/suko-mublog/tags/%E5%A4%9C%E4%B9%8B%E5%9F%8E/" class="post-tag">#夜之城</a>
-              
-            
-          </div>
-          <a href="/suko-mublog/2024/12/31/hello-world/" class="post-read-more">READ MORE →</a>
-        </div>
-      </article>
-    
+    </div>
   </div>
-</section>
 
-<!-- Features Section -->
-<section class="section-container features-section">
-  <div class="features-grid">
-    <a href="/suko-mublog/projects" class="feature-card cyber-card">
-      <div class="feature-icon">⚙</div>
-      <h3 class="feature-title">项目展示</h3>
-      <p class="feature-desc">我的代码与创造</p>
-    </a>
-    <a href="/suko-mublog/photos" class="feature-card cyber-card">
-      <div class="feature-icon">📷</div>
-      <h3 class="feature-title">图片墙</h3>
-      <p class="feature-desc">记录瞬间</p>
-    </a>
-    <a href="/suko-mublog/music" class="feature-card cyber-card">
-      <div class="feature-icon">♫</div>
-      <h3 class="feature-title">点歌台</h3>
-      <p class="feature-desc">Night City Radio</p>
-    </a>
-    <a href="/suko-mublog/search" class="feature-card cyber-card">
-      <div class="feature-icon">🔍</div>
-      <h3 class="feature-title">搜索</h3>
-      <p class="feature-desc">寻找记忆碎片</p>
-    </a>
-  </div>
-</section>
 
   </main>
 
