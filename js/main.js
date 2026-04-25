@@ -492,6 +492,19 @@
   }
 
   // ═══════════════════════════════════════════
+  // DAY COUNTER
+  // ═══════════════════════════════════════════
+  function initDayCounter() {
+    const el = document.getElementById('dayCount');
+    if (!el) return;
+    // Blog start date: 2025-01-01
+    const startDate = new Date('2025-01-01');
+    const today = new Date();
+    const diff = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    el.textContent = diff;
+  }
+
+  // ═══════════════════════════════════════════
   // INIT ALL
   // ═══════════════════════════════════════════
   function init() {
@@ -508,6 +521,7 @@
     initReadingProgress();
     initCodeCopy();
     initHeaderScroll();
+    initDayCounter();
     initConsoleEasterEgg();
   }
 

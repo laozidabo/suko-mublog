@@ -8,27 +8,9 @@
 
   // ═══════════════════════════════════════════
   // DEFAULT PLAYLIST (Night City Radio)
+  // Add songs via the song request form on the /music page
   // ═══════════════════════════════════════════
-  const DEFAULT_PLAYLIST = [
-    {
-      title: 'I Really Want to Stay at Your House',
-      artist: 'Rosa Walton & Hallie Coggins',
-      url: 'https://music.163.com/song/media/outer/url?id=1974444090.mp3',
-      cover: ''
-    },
-    {
-      title: 'Let You Down',
-      artist: 'Dawid Podsiadło',
-      url: 'https://music.163.com/song/media/outer/url?id=1974444091.mp3',
-      cover: ''
-    },
-    {
-      title: 'Outsider',
-      artist: 'Edgerunners OST',
-      url: '',
-      cover: ''
-    }
-  ];
+  const DEFAULT_PLAYLIST = [];
 
   let playlist = [];
   let currentIndex = 0;
