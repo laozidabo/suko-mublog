@@ -1,0 +1,44 @@
+name: Deploy Hexo Blog
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Fix ESM compatibility
+        run: |
+          rm -rf node_modules/hexo/node_modules/strip-ansi
+          cp -r node_modules/strip-ansi node_modules/hexo/node_modules/strip-ansi 2>/dev/null || true
+          rm -rf node_modules/hexo/node_modules/ansi-regex
+          cp -r node_modules/ansi-regex node_modules/hexo/node_modules/ansi-regex 2>/dev/null || true
+
+      - name: Generate
+        run: npx hexo generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
