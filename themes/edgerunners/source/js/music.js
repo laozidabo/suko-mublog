@@ -9,7 +9,7 @@
   // ═══════════════════════════════════════════
   // MUSIC API (NetEase Cloud Music proxy)
   // ═══════════════════════════════════════════
-  const API_BASE = 'https://api.injahow.cn/meting';
+  const API_BASE = 'http://202.182.103.180:8443';
 
   let playlist = [];
   let currentIndex = 0;
@@ -36,18 +36,18 @@
   // ═══════════════════════════════════════════
   async function searchSongs(keyword) {
     try {
-      const url = `${API_BASE}?type=search&source=netease&s=${encodeURIComponent(keyword)}`;
+      const url = `${API_BASE}/search?keyword=${encodeURIComponent(keyword)}&limit=10`;
       const resp = await fetch(url);
       if (!resp.ok) throw new Error('Search failed');
       const data = await resp.json();
       if (!Array.isArray(data)) return [];
-      return data.slice(0, 10).map(function (item) {
+      return data.map(function (item) {
         return {
           id: item.id,
-          title: item.title || item.name || 'Unknown',
-          artist: item.author || item.artist || 'Unknown',
-          url: `${API_BASE}?type=url&source=netease&id=${item.id}`,
-          cover: item.pic || item.cover || '',
+          title: item.title || 'Unknown',
+          artist: item.artist || 'Unknown',
+          url: item.url || '',
+          cover: item.cover || '',
           duration: item.duration || 0
         };
       });
