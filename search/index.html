@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>搜索 | Night City Terminal</title>
+<meta name="description" content="赛博朋克风格个人博客 — 欢迎来到夜之城">
+<meta name="theme-color" content="#0a0a0f">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/suko-mublog/css/style.css">
+
+<!-- Favicon -->
+<link rel="icon" href="/suko-mublog/images/favicon.svg" type="image/svg+xml">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body class="cyberpunk-bg">
+  <!-- Scan Lines Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Glitch Effect Overlay -->
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+
+  <!-- Navigation -->
+  <header class="cyber-header" id="cyberHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="/suko-mublog/" class="cyber-logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text" data-text="Night City Terminal">Night City Terminal</span>
+      <span class="logo-bracket">]</span>
+    </a>
+
+    <!-- Nav Toggle (Mobile) -->
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav" id="cyberNav">
+      
+        <a href="/suko-mublog/" class="nav-link ">
+          <span class="nav-link-text">首页</span>
+          <span class="nav-link-glitch" data-text="首页">首页</span>
+        </a>
+      
+        <a href="/suko-mublog/archives" class="nav-link ">
+          <span class="nav-link-text">博客</span>
+          <span class="nav-link-glitch" data-text="博客">博客</span>
+        </a>
+      
+        <a href="/suko-mublog/projects" class="nav-link ">
+          <span class="nav-link-text">项目</span>
+          <span class="nav-link-glitch" data-text="项目">项目</span>
+        </a>
+      
+        <a href="/suko-mublog/photos" class="nav-link ">
+          <span class="nav-link-text">图片</span>
+          <span class="nav-link-glitch" data-text="图片">图片</span>
+        </a>
+      
+        <a href="/suko-mublog/about" class="nav-link ">
+          <span class="nav-link-text">关于</span>
+          <span class="nav-link-glitch" data-text="关于">关于</span>
+        </a>
+      
+        <a href="/suko-mublog/music" class="nav-link ">
+          <span class="nav-link-text">点歌</span>
+          <span class="nav-link-glitch" data-text="点歌">点歌</span>
+        </a>
+      
+      <a href="/suko-mublog/search" class="nav-link nav-search">
+        <span class="nav-link-text">搜索</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Header Decorative Line -->
+  <div class="header-line"></div>
+</header>
+
+
+  <!-- Main Content -->
+  <main class="main-container" id="mainContent">
+    
+  <div class="search-container">
+  <div class="page-header cyber-card">
+    <h1 class="page-title">
+      <span class="page-title-icon">🔍</span>
+      搜索
+    </h1>
+    <p class="page-desc">在 Night City 的数据库中检索记忆碎片</p>
+  </div>
+
+  <!-- Search Box -->
+  <div class="search-box cyber-card">
+    <div class="search-input-wrap">
+      <span class="search-prefix">SEARCH://</span>
+      <input type="text" class="search-input cyber-input" id="searchInput" placeholder="输入关键词..." autofocus>
+      <button class="search-btn" id="searchBtn">GO</button>
+    </div>
+    <div class="search-filters">
+      <label class="search-filter">
+        <input type="checkbox" checked> 文章
+      </label>
+      <label class="search-filter">
+        <input type="checkbox" checked> 标签
+      </label>
+    </div>
+  </div>
+
+  <!-- Search Results -->
+  <div class="search-results" id="searchResults">
+    <div class="search-empty">
+      <span class="search-empty-icon">◈</span>
+      <p>输入关键词开始搜索</p>
+    </div>
+  </div>
+  <p class="search-status" id="searchStatus"></p>
+</div>
+
+
+
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="cyber-sidebar" id="sidebar">
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="侧边栏">
+    <span>◁</span>
+  </button>
+
+  <!-- User Card -->
+  <div class="sidebar-card user-card">
+    <div class="user-avatar">
+      <div class="avatar-frame">
+        <img src="/suko-mublog/images/avatar.svg" alt="Avatar" class="avatar-img">
+      </div>
+      <div class="avatar-status">ONLINE</div>
+    </div>
+    <h3 class="user-name">Suko</h3>
+    <p class="user-bio">We got a city to burn.</p>
+    <div class="user-stats">
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">POSTS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8</span>
+        <span class="stat-label">TAGS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">CATS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rebecca Card -->
+  <div class="sidebar-card rebecca-card">
+    <div class="rebecca-header">
+      <span class="rebecca-tag">FAV CHARACTER</span>
+    </div>
+    <div class="rebecca-art">
+      <pre class="rebecca-ascii">
+  ╔═══════════╗
+  ║  REBECCA  ║
+  ║  EDGERUNNER
+  ╚═══════════╝
+      </pre>
+    </div>
+    <p class="rebecca-quote">"Don't mess with me, gonk!"</p>
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      最近文章
+    </h4>
+    <ul class="recent-posts">
+      
+        <li class="recent-post-item">
+          <a href="/suko-mublog/2025/04/20/xray-proxy-setup/" class="recent-post-link">
+            <span class="recent-post-date">04/20</span>
+            <span class="recent-post-title">Xray VLESS+Reality 代理搭建记录</span>
+          </a>
+        </li>
+      
+        <li class="recent-post-item">
+          <a href="/suko-mublog/2025/03/15/markdown-syntax-guide/" class="recent-post-link">
+            <span class="recent-post-date">03/15</span>
+            <span class="recent-post-title">Markdown 语法测试</span>
+          </a>
+        </li>
+      
+        <li class="recent-post-item">
+          <a href="/suko-mublog/2024/12/31/hello-world/" class="recent-post-link">
+            <span class="recent-post-date">01/01</span>
+            <span class="recent-post-title">欢迎来到夜之城</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Tags -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      标签
+    </h4>
+    <div class="tag-cloud">
+      
+        <a href="/suko-mublog/tags/Markdown/" class="tag-item">
+          #Markdown
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/VPS/" class="tag-item">
+          #VPS
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/Xray/" class="tag-item">
+          #Xray
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/%E4%BB%A3%E7%90%86/" class="tag-item">
+          #代理
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/%E5%A4%9C%E4%B9%8B%E5%9F%8E/" class="tag-item">
+          #夜之城
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/%E6%B5%8B%E8%AF%95/" class="tag-item">
+          #测试
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/%E7%BD%91%E7%BB%9C/" class="tag-item">
+          #网络
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/suko-mublog/tags/%E9%9A%8F%E7%AC%94/" class="tag-item">
+          #随笔
+          <span class="tag-count">1</span>
+        </a>
+      
+    </div>
+  </div>
+
+  <!-- Edgerunners Quotes -->
+  <div class="sidebar-card quote-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      EDGERUNNERS语录
+    </h4>
+    <div class="sidebar-quote" id="sidebarQuote">
+      <p class="sq-text">"In the end, you have to be willing to sacrifice everything for your dream."</p>
+      <p class="sq-author">— DAVID MARTINEZ</p>
+    </div>
+  </div>
+</aside>
+
+
+  <!-- Footer -->
+  <footer class="cyber-footer">
+  <div class="footer-container">
+    <!-- Decorative -->
+    <div class="footer-deco">
+      <div class="footer-line-left"></div>
+      <span class="footer-diamond">◆</span>
+      <div class="footer-line-right"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="footer-content">
+      <p class="footer-tagline">MADE WITH LOVE AND CYBERNETIC IMPLANTS</p>
+      <p class="footer-copyright">
+        <span class="footer-year">© 2026</span>
+        <span class="footer-name">Night City Terminal</span>
+      </p>
+      <p class="footer-powered">
+        POWERED BY <a href="https://hexo.io" target="_blank">HEXO</a>
+        <span class="footer-sep">|</span>
+        THEME: <span class="footer-theme-name">EDGERUNNERS</span>
+      </p>
+    </div>
+
+    <!-- Rebecca Quote -->
+    <div class="footer-quote">
+      <p class="quote-text" id="footerQuote">"I won't let anyone else I care about die."</p>
+      <p class="quote-author">— REBECCA, CYBERPUNK: EDGERUNNERS</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Music Player -->
+  <!-- Mini Music Player (floating) -->
+<div class="mini-player" id="miniPlayer">
+  <button class="mini-player-toggle" id="miniPlayerToggle" title="音乐播放器">
+    <span class="mini-player-icon">♫</span>
+  </button>
+  <div class="mini-player-panel" id="miniPlayerPanel">
+    <div class="mini-player-info">
+      <span class="mini-player-title" id="miniTitle">Night City Radio</span>
+      <span class="mini-player-artist" id="miniArtist">等待点歌...</span>
+    </div>
+    <div class="mini-player-controls">
+      <button class="mini-ctrl" id="miniPrev">⏮</button>
+      <button class="mini-ctrl mini-play" id="miniPlay">▶</button>
+      <button class="mini-ctrl" id="miniNext">⏭</button>
+    </div>
+    <div class="mini-progress">
+      <div class="mini-progress-bar">
+        <div class="mini-progress-fill" id="miniProgress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="auto"></audio>
+
+
+  <!-- Weather Widget -->
+  <!-- Weather Widget -->
+<div class="weather-widget" id="weatherWidget">
+  <button class="weather-toggle" id="weatherToggle" title="天气">
+    <span class="weather-toggle-icon">☁</span>
+  </button>
+  <div class="weather-panel" id="weatherPanel">
+    <div class="weather-header">
+      <span class="weather-title">天气实况</span>
+      <button class="weather-close" id="weatherClose">✕</button>
+    </div>
+    <div class="weather-content" id="weatherContent">
+      <div class="weather-loading">加载中...</div>
+    </div>
+    <div class="weather-clothing" id="weatherClothing">
+      <h4 class="clothing-title">👗 穿衣建议</h4>
+      <div class="clothing-content" id="clothingContent">加载中...</div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Back to Top -->
+  <button class="cyber-btn-top" id="backToTop" title="回顶部">
+    <span class="cyber-btn-top-icon">▲</span>
+  </button>
+
+  <!-- Scripts -->
+  <!-- Main Script -->
+<script src="/suko-mublog/js/main.js"></script>
+
+<!-- Search Script (only on search page) -->
+
+<script src="/suko-mublog/js/search.js"></script>
+
+
+<!-- Page-specific Scripts -->
+
+
+
+
+</body>
+</html>
