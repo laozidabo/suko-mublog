@@ -7,40 +7,33 @@
     <p class="page-desc">点一首歌，让 Night City 的霓虹灯为你闪烁</p>
   </div>
 
-  <!-- Now Playing -->
-  <div class="now-playing cyber-card" id="nowPlaying">
-    <div class="np-visualizer">
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
-      <div class="np-bar"></div>
+  <!-- Full Player -->
+  <div class="music-player-full cyber-card">
+    <div class="full-player-visual">
+      <canvas id="visualizerCanvas" width="600" height="120"></canvas>
     </div>
-    <div class="np-info">
-      <span class="np-label">NOW PLAYING</span>
-      <h3 class="np-title" id="npTitle">等待点歌...</h3>
-      <p class="np-artist" id="npArtist">Night City Radio</p>
+    <div class="full-player-info">
+      <span class="full-label">NOW PLAYING</span>
+      <h3 class="full-title" id="fullTitle">等待点歌...</h3>
+      <p class="full-artist" id="fullArtist">Night City Radio</p>
     </div>
-    <div class="np-controls">
-      <button class="np-btn" id="npPrev" title="上一首">⏮</button>
-      <button class="np-btn np-play" id="npPlay" title="播放/暂停">▶</button>
-      <button class="np-btn" id="npNext" title="下一首">⏭</button>
+    <div class="full-player-controls">
+      <button class="full-ctrl" id="fullPrev" title="上一首">⏮</button>
+      <button class="full-ctrl full-play" id="fullPlay" title="播放/暂停">▶</button>
+      <button class="full-ctrl" id="fullNext" title="下一首">⏭</button>
     </div>
-    <div class="np-progress">
-      <div class="np-progress-bar">
-        <div class="np-progress-fill" id="npProgress"></div>
+    <div class="full-player-progress">
+      <div class="full-progress-bar" id="fullProgressBar">
+        <div class="full-progress-fill" id="fullProgressFill"></div>
       </div>
-      <div class="np-time">
-        <span id="npCurrentTime">0:00</span>
-        <span id="npTotalTime">0:00</span>
+      <div class="full-time">
+        <span id="fullCurrentTime">0:00</span>
+        <span id="fullDuration">0:00</span>
       </div>
     </div>
-    <div class="np-volume">
+    <div class="full-volume">
       <span class="volume-icon">🔊</span>
-      <input type="range" class="volume-slider" id="npVolume" min="0" max="100" value="80">
+      <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.01" value="0.8">
     </div>
   </div>
 
@@ -51,16 +44,8 @@
       播放列表
       <span class="section-bracket">]</span>
     </h2>
-    <div class="playlist" id="playlist">
-      <div class="playlist-item" data-src="/music/sample.mp3" data-title="I Really Want to Stay at Your House" data-artist="Rosa Walton">
-        <span class="playlist-num">01</span>
-        <div class="playlist-info">
-          <span class="playlist-song">I Really Want to Stay at Your House</span>
-          <span class="playlist-artist">Rosa Walton</span>
-        </div>
-        <span class="playlist-duration">4:05</span>
-      </div>
-      <!-- Add more songs -->
+    <div class="playlist" id="playlistItems">
+      <div class="playlist-empty">播放列表为空，在下方点首歌吧</div>
     </div>
   </div>
 
@@ -71,10 +56,23 @@
       点歌
       <span class="section-bracket">]</span>
     </h2>
-    <p class="request-desc">输入歌曲名或链接，我会添加到播放列表</p>
+    <p class="request-desc">输入歌曲信息，添加到播放列表</p>
     <form class="request-form" id="songRequestForm">
-      <input type="text" class="cyber-input" id="songInput" placeholder="输入歌曲名或 URL...">
-      <button type="submit" class="cyber-btn primary">点歌</button>
+      <div class="request-fields">
+        <input type="text" class="cyber-input" id="requestTitle" placeholder="歌曲名" required>
+        <input type="text" class="cyber-input" id="requestArtist" placeholder="歌手名">
+        <input type="url" class="cyber-input" id="requestUrl" placeholder="音频 URL (mp3/ogg/wav)" required>
+      </div>
+      <button type="submit" class="cyber-btn primary">添加到播放列表</button>
+      <p class="request-status" id="requestStatus"></p>
     </form>
+    <div class="request-tips">
+      <p class="tip-title">💡 如何获取音频 URL？</p>
+      <ul class="tip-list">
+        <li>上传 mp3 文件到公开网盘，获取直链</li>
+        <li>使用免费音乐托管服务</li>
+        <li>链接需以 .mp3 / .ogg / .wav 结尾</li>
+      </ul>
+    </div>
   </div>
 </div>
