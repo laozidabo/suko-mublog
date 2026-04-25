@@ -17,7 +17,8 @@ language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
-url: https://suko.online
+url: https://laozidabo.github.io/suko-mublog
+root: /suko-mublog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
