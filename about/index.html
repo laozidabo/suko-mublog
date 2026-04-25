@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>关于我 | Night City Terminal</title>
+<meta name="description" content="赛博朋克风格个人博客 — 欢迎来到夜之城">
+<meta name="theme-color" content="#0a0a0f">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="/css/style.css">
+
+<!-- Favicon -->
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+<body class="cyberpunk-bg">
+  <!-- Scan Lines Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Glitch Effect Overlay -->
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+
+  <!-- Navigation -->
+  <header class="cyber-header" id="cyberHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="/" class="cyber-logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text" data-text="Night City Terminal">Night City Terminal</span>
+      <span class="logo-bracket">]</span>
+    </a>
+
+    <!-- Nav Toggle (Mobile) -->
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav" id="cyberNav">
+      
+        <a href="/" class="nav-link ">
+          <span class="nav-link-text">首页</span>
+          <span class="nav-link-glitch" data-text="首页">首页</span>
+        </a>
+      
+        <a href="/archives" class="nav-link ">
+          <span class="nav-link-text">博客</span>
+          <span class="nav-link-glitch" data-text="博客">博客</span>
+        </a>
+      
+        <a href="/projects" class="nav-link ">
+          <span class="nav-link-text">项目</span>
+          <span class="nav-link-glitch" data-text="项目">项目</span>
+        </a>
+      
+        <a href="/photos" class="nav-link ">
+          <span class="nav-link-text">图片</span>
+          <span class="nav-link-glitch" data-text="图片">图片</span>
+        </a>
+      
+        <a href="/about" class="nav-link active">
+          <span class="nav-link-text">关于</span>
+          <span class="nav-link-glitch" data-text="关于">关于</span>
+        </a>
+      
+        <a href="/music" class="nav-link ">
+          <span class="nav-link-text">点歌</span>
+          <span class="nav-link-glitch" data-text="点歌">点歌</span>
+        </a>
+      
+      <a href="/search" class="nav-link nav-search">
+        <span class="nav-link-text">搜索</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Header Decorative Line -->
+  <div class="header-line"></div>
+</header>
+
+
+  <!-- Main Content -->
+  <main class="main-container" id="mainContent">
+    <!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-glitch-title">
+      <h1 class="hero-title" data-text="Night City Terminal">Night City Terminal</h1>
+    </div>
+    <p class="hero-subtitle">WAKE UP, SAMURAI</p>
+    <p class="hero-description">We got a city to burn.</p>
+
+    <!-- Hero Stats Bar -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value">3</span>
+        <span class="hero-stat-label">ARTICLES</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value">8</span>
+        <span class="hero-stat-label">TAGS</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value" id="dayCount">0</span>
+        <span class="hero-stat-label">DAYS ONLINE</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="hero-cta">
+      <a href="/archives" class="cyber-btn primary">
+        <span class="cyber-btn-text">进入博客</span>
+        <span class="cyber-btn-glitch" data-text="进入博客">进入博客</span>
+      </a>
+      <a href="/about" class="cyber-btn secondary">
+        <span class="cyber-btn-text">关于我</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Decorative -->
+  <div class="hero-deco">
+    <div class="hero-circle"></div>
+    <div class="hero-lines">
+      <div class="hline hline-1"></div>
+      <div class="hline hline-2"></div>
+      <div class="hline hline-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="section-container">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="section-title-bracket">[</span>
+      <span class="section-title-text">最新文章</span>
+      <span class="section-title-bracket">]</span>
+    </h2>
+    <a href="/archives" class="section-more">查看全部 →</a>
+  </div>
+
+  <div class="posts-grid">
+    
+      <article class="post-card cyber-card">
+        <div class="post-card-header">
+          <span class="post-date">
+            <span class="post-date-icon">◷</span>
+            2025-04-20
+          </span>
+          
+            <span class="post-category">
+              技术
+            </span>
+          
+        </div>
+        <h3 class="post-card-title">
+          <a href="/2025/04/20/xray-proxy-setup/">Xray VLESS+Reality 代理搭建记录</a>
+        </h3>
+        <p class="post-card-excerpt">
+          记录一下最近在 Vultr VPS 上搭建 Xray VLESS+Reality 代理的全过程。
+为什么选择 VLESS+Reality传统的 VMess+WS 方案已经被识别得差不多了，Reality 协议的优势在于：
+
+不需要域名和证书
+伪装成正常 HTTPS 流量
+指纹识别难度极高
+
+环境信息...
+        </p>
+        <div class="post-card-footer">
+          <div class="post-tags">
+            
+              
+                <a href="/tags/%E4%BB%A3%E7%90%86/" class="post-tag">#代理</a>
+              
+                <a href="/tags/VPS/" class="post-tag">#VPS</a>
+              
+                <a href="/tags/%E7%BD%91%E7%BB%9C/" class="post-tag">#网络</a>
+              
+            
+          </div>
+          <a href="/2025/04/20/xray-proxy-setup/" class="post-read-more">READ MORE →</a>
+        </div>
+      </article>
+    
+      <article class="post-card cyber-card">
+        <div class="post-card-header">
+          <span class="post-date">
+            <span class="post-date-icon">◷</span>
+            2025-03-15
+          </span>
+          
+            <span class="post-category">
+              技术
+            </span>
+          
+        </div>
+        <h3 class="post-card-title">
+          <a href="/2025/03/15/markdown-syntax-guide/">Markdown 语法测试</a>
+        </h3>
+        <p class="post-card-excerpt">
+          这篇文章用来测试博客主题对各种 Markdown 语法的渲染效果。
+基础语法标题H1 到 H6 的标题层级。
+段落与换行这是第一段。
+这是第二段，中间有空行分隔。
+强调
+粗体文本
+斜体文本
+粗斜体
+删除线
+
+列表无序列表：
+
+项目一
+项目二
+子项目 A
+子项目 B
+
+
+项目三
+
+有序列表：
+
+第一步...
+        </p>
+        <div class="post-card-footer">
+          <div class="post-tags">
+            
+              
+                <a href="/tags/Markdown/" class="post-tag">#Markdown</a>
+              
+                <a href="/tags/%E6%B5%8B%E8%AF%95/" class="post-tag">#测试</a>
+              
+            
+          </div>
+          <a href="/2025/03/15/markdown-syntax-guide/" class="post-read-more">READ MORE →</a>
+        </div>
+      </article>
+    
+      <article class="post-card cyber-card">
+        <div class="post-card-header">
+          <span class="post-date">
+            <span class="post-date-icon">◷</span>
+            2025-01-01
+          </span>
+          
+            <span class="post-category">
+              日记
+            </span>
+          
+        </div>
+        <h3 class="post-card-title">
+          <a href="/2024/12/31/hello-world/">欢迎来到夜之城</a>
+        </h3>
+        <p class="post-card-excerpt">
+          
+“Welcome to Night City.” — Narrator
+
+这是我的赛博朋克风格博客的第一篇文章。
+在这个博客里，我会分享一些关于技术、生活、以及各种有趣事物的思考。
+关于这个博客这个博客使用 Hexo 搭建，主题是完全自定义的 Edgerunners 主题，灵感来自《赛博朋克：边缘...
+        </p>
+        <div class="post-card-footer">
+          <div class="post-tags">
+            
+              
+                <a href="/tags/%E9%9A%8F%E7%AC%94/" class="post-tag">#随笔</a>
+              
+                <a href="/tags/%E5%A4%9C%E4%B9%8B%E5%9F%8E/" class="post-tag">#夜之城</a>
+              
+            
+          </div>
+          <a href="/2024/12/31/hello-world/" class="post-read-more">READ MORE →</a>
+        </div>
+      </article>
+    
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="section-container features-section">
+  <div class="features-grid">
+    <a href="/projects" class="feature-card cyber-card">
+      <div class="feature-icon">⚙</div>
+      <h3 class="feature-title">项目展示</h3>
+      <p class="feature-desc">我的代码与创造</p>
+    </a>
+    <a href="/photos" class="feature-card cyber-card">
+      <div class="feature-icon">📷</div>
+      <h3 class="feature-title">图片墙</h3>
+      <p class="feature-desc">记录瞬间</p>
+    </a>
+    <a href="/music" class="feature-card cyber-card">
+      <div class="feature-icon">♫</div>
+      <h3 class="feature-title">点歌台</h3>
+      <p class="feature-desc">Night City Radio</p>
+    </a>
+    <a href="/search" class="feature-card cyber-card">
+      <div class="feature-icon">🔍</div>
+      <h3 class="feature-title">搜索</h3>
+      <p class="feature-desc">寻找记忆碎片</p>
+    </a>
+  </div>
+</section>
+
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="cyber-sidebar" id="sidebar">
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="侧边栏">
+    <span>◁</span>
+  </button>
+
+  <!-- User Card -->
+  <div class="sidebar-card user-card">
+    <div class="user-avatar">
+      <div class="avatar-frame">
+        <img src="/images/avatar.svg" alt="Avatar" class="avatar-img">
+      </div>
+      <div class="avatar-status">ONLINE</div>
+    </div>
+    <h3 class="user-name">Suko</h3>
+    <p class="user-bio">We got a city to burn.</p>
+    <div class="user-stats">
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">POSTS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8</span>
+        <span class="stat-label">TAGS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">CATS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rebecca Card -->
+  <div class="sidebar-card rebecca-card">
+    <div class="rebecca-header">
+      <span class="rebecca-tag">FAV CHARACTER</span>
+    </div>
+    <div class="rebecca-art">
+      <pre class="rebecca-ascii">
+  ╔═══════════╗
+  ║  REBECCA  ║
+  ║  EDGERUNNER
+  ╚═══════════╝
+      </pre>
+    </div>
+    <p class="rebecca-quote">"Don't mess with me, gonk!"</p>
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      最近文章
+    </h4>
+    <ul class="recent-posts">
+      
+        <li class="recent-post-item">
+          <a href="/2025/04/20/xray-proxy-setup/" class="recent-post-link">
+            <span class="recent-post-date">04/20</span>
+            <span class="recent-post-title">Xray VLESS+Reality 代理搭建记录</span>
+          </a>
+        </li>
+      
+        <li class="recent-post-item">
+          <a href="/2025/03/15/markdown-syntax-guide/" class="recent-post-link">
+            <span class="recent-post-date">03/15</span>
+            <span class="recent-post-title">Markdown 语法测试</span>
+          </a>
+        </li>
+      
+        <li class="recent-post-item">
+          <a href="/2024/12/31/hello-world/" class="recent-post-link">
+            <span class="recent-post-date">01/01</span>
+            <span class="recent-post-title">欢迎来到夜之城</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <!-- Tags -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      标签
+    </h4>
+    <div class="tag-cloud">
+      
+        <a href="/tags/Markdown/" class="tag-item">
+          #Markdown
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/VPS/" class="tag-item">
+          #VPS
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/Xray/" class="tag-item">
+          #Xray
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/%E4%BB%A3%E7%90%86/" class="tag-item">
+          #代理
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/%E5%A4%9C%E4%B9%8B%E5%9F%8E/" class="tag-item">
+          #夜之城
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95/" class="tag-item">
+          #测试
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/%E7%BD%91%E7%BB%9C/" class="tag-item">
+          #网络
+          <span class="tag-count">1</span>
+        </a>
+      
+        <a href="/tags/%E9%9A%8F%E7%AC%94/" class="tag-item">
+          #随笔
+          <span class="tag-count">1</span>
+        </a>
+      
+    </div>
+  </div>
+
+  <!-- Edgerunners Quotes -->
+  <div class="sidebar-card quote-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      EDGERUNNERS语录
+    </h4>
+    <div class="sidebar-quote" id="sidebarQuote">
+      <p class="sq-text">"In the end, you have to be willing to sacrifice everything for your dream."</p>
+      <p class="sq-author">— DAVID MARTINEZ</p>
+    </div>
+  </div>
+</aside>
+
+
+  <!-- Footer -->
+  <footer class="cyber-footer">
+  <div class="footer-container">
+    <!-- Decorative -->
+    <div class="footer-deco">
+      <div class="footer-line-left"></div>
+      <span class="footer-diamond">◆</span>
+      <div class="footer-line-right"></div>
+    </div>
+
+    <!-- Content -->
+    <div class="footer-content">
+      <p class="footer-tagline">MADE WITH LOVE AND CYBERNETIC IMPLANTS</p>
+      <p class="footer-copyright">
+        <span class="footer-year">© 2026</span>
+        <span class="footer-name">Night City Terminal</span>
+      </p>
+      <p class="footer-powered">
+        POWERED BY <a href="https://hexo.io" target="_blank">HEXO</a>
+        <span class="footer-sep">|</span>
+        THEME: <span class="footer-theme-name">EDGERUNNERS</span>
+      </p>
+    </div>
+
+    <!-- Rebecca Quote -->
+    <div class="footer-quote">
+      <p class="quote-text" id="footerQuote">"I won't let anyone else I care about die."</p>
+      <p class="quote-author">— REBECCA, CYBERPUNK: EDGERUNNERS</p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- Music Player -->
+  <!-- Mini Music Player (floating) -->
+<div class="mini-player" id="miniPlayer">
+  <button class="mini-player-toggle" id="miniPlayerToggle" title="音乐播放器">
+    <span class="mini-player-icon">♫</span>
+  </button>
+  <div class="mini-player-panel" id="miniPlayerPanel">
+    <div class="mini-player-info">
+      <span class="mini-player-title" id="miniTitle">Night City Radio</span>
+      <span class="mini-player-artist" id="miniArtist">等待点歌...</span>
+    </div>
+    <div class="mini-player-controls">
+      <button class="mini-ctrl" id="miniPrev">⏮</button>
+      <button class="mini-ctrl mini-play" id="miniPlay">▶</button>
+      <button class="mini-ctrl" id="miniNext">⏭</button>
+    </div>
+    <div class="mini-progress">
+      <div class="mini-progress-bar">
+        <div class="mini-progress-fill" id="miniProgress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="auto"></audio>
+
+
+  <!-- Weather Widget -->
+  <!-- Weather Widget -->
+<div class="weather-widget" id="weatherWidget">
+  <button class="weather-toggle" id="weatherToggle" title="天气">
+    <span class="weather-toggle-icon">☁</span>
+  </button>
+  <div class="weather-panel" id="weatherPanel">
+    <div class="weather-header">
+      <span class="weather-title">天气实况</span>
+      <button class="weather-close" id="weatherClose">✕</button>
+    </div>
+    <div class="weather-content" id="weatherContent">
+      <div class="weather-loading">加载中...</div>
+    </div>
+    <div class="weather-clothing" id="weatherClothing">
+      <h4 class="clothing-title">👗 穿衣建议</h4>
+      <div class="clothing-content" id="clothingContent">加载中...</div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Back to Top -->
+  <button class="cyber-btn-top" id="backToTop" title="回顶部">
+    <span class="cyber-btn-top-icon">▲</span>
+  </button>
+
+  <!-- Scripts -->
+  <!-- Main Script -->
+<script src="/js/main.js"></script>
+
+<!-- Search Script (only on search page) -->
+
+
+<!-- Page-specific Scripts -->
+
+
+
+
+</body>
+</html>
