@@ -9,7 +9,7 @@
   // ═══════════════════════════════════════════
   // MUSIC API (NetEase Cloud Music proxy)
   // ═══════════════════════════════════════════
-  const API_BASE = 'http://202.182.103.180:8443';
+  const API_BASE = 'https://api.allorigins.win/raw?url=' + encodeURIComponent('http://202.182.103.180:8443');
 
   let playlist = [];
   let currentIndex = 0;
@@ -36,7 +36,8 @@
   // ═══════════════════════════════════════════
   async function searchSongs(keyword) {
     try {
-      const url = `${API_BASE}/search?keyword=${encodeURIComponent(keyword)}&limit=10`;
+      const targetUrl = `http://202.182.103.180:8443/search?keyword=${encodeURIComponent(keyword)}&limit=10`;
+      const url = `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`;
       const resp = await fetch(url);
       if (!resp.ok) throw new Error('Search failed');
       const data = await resp.json();
