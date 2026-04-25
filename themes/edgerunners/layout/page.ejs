@@ -1,0 +1,23 @@
+<% if (page.type === 'about') { %>
+  <%- partial('page/about') %>
+<% } else if (page.type === 'projects') { %>
+  <%- partial('page/projects') %>
+<% } else if (page.type === 'photos') { %>
+  <%- partial('page/photos') %>
+<% } else if (page.type === 'music') { %>
+  <%- partial('page/music') %>
+<% } else if (page.type === 'search') { %>
+  <%- partial('page/search') %>
+<% } else { %>
+  <div class="page-container cyber-card">
+    <div class="page-header">
+      <h1 class="page-title">
+        <span class="page-title-icon">◈</span>
+        <%= page.title %>
+      </h1>
+    </div>
+    <div class="page-content">
+      <%- page.content %>
+    </div>
+  </div>
+<% } %>
