@@ -1348,64 +1348,128 @@ a
   font-size: 0.75rem
   color: var(--text-muted)
 
-/* Song Request */
-.song-request
-  margin-top: 20px
+/* Song Search */
+.song-search
+  margin-bottom: 20px
+  position: relative
 
-.request-title
-  font-family: var(--font-display)
-  font-size: 1rem
+.song-search-wrap
+  display: flex
+  align-items: center
+  gap: 10px
+  padding: 5px
+
+.search-icon
+  font-size: 1.2rem
+  color: var(--primary)
+
+.song-search-input
+  flex: 1
+  background: rgba(0, 0, 0, 0.3)
+  border: 1px solid var(--card-border)
   color: var(--text)
-  letter-spacing: 2px
-  margin-bottom: 10px
+  font-family: var(--font-mono)
+  font-size: 0.95rem
+  padding: 10px 15px
+  border-radius: 4px
+  outline: none
+  transition: border-color 0.3s
+  &:focus
+    border-color: var(--primary)
+  &::placeholder
+    color: var(--text-muted)
 
-.request-desc
+.song-search-btn
+  background: var(--primary)
+  color: var(--dark)
+  border: none
+  font-family: var(--font-display)
+  font-size: 0.85rem
+  font-weight: 600
+  padding: 10px 20px
+  border-radius: 4px
+  cursor: pointer
+  letter-spacing: 1px
+  transition: all 0.3s
+  &:hover
+    background: #ff4d85
+    box-shadow: var(--glow-primary)
+
+.song-search-results
+  position: absolute
+  top: 100%
+  left: 0
+  right: 0
+  background: var(--card)
+  border: 1px solid var(--card-border)
+  border-top: none
+  border-radius: 0 0 4px 4px
+  max-height: 350px
+  overflow-y: auto
+  z-index: 10
+  display: none
+  &.open
+    display: block
+
+.search-loading
+  padding: 15px
+  text-align: center
+  font-family: var(--font-mono)
   font-size: 0.85rem
   color: var(--text-muted)
-  margin-bottom: 15px
 
-.request-form
+.song-result
   display: flex
-  flex-direction: column
+  align-items: center
   gap: 10px
+  padding: 10px 15px
+  cursor: pointer
+  transition: background 0.2s
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+  &:hover
+    background: rgba(255, 42, 109, 0.08)
 
-.request-fields
-  display: flex
-  gap: 10px
-  flex-wrap: wrap
+.song-result-info
+  flex: 1
+  min-width: 0
 
-  .cyber-input
-    flex: 1
-    min-width: 150px
+.song-result-title
+  display: block
+  font-size: 0.9rem
+  color: var(--text)
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
 
-.request-status
+.song-result-artist
+  display: block
   font-family: var(--font-mono)
-  font-size: 0.8rem
-  min-height: 1.2em
+  font-size: 0.75rem
+  color: var(--text-muted)
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
 
-.request-tips
-  margin-top: 15px
-  padding: 15px
-  background: rgba(5, 217, 232, 0.05)
-  border: 1px solid rgba(5, 217, 232, 0.15)
-  border-radius: 4px
+.song-result-play, .song-result-add
+  background: none
+  border: 1px solid var(--card-border)
+  color: var(--text)
+  width: 30px
+  height: 30px
+  border-radius: 50%
+  cursor: pointer
+  font-size: 0.7rem
+  transition: all 0.3s
+  flex-shrink: 0
+  &:hover
+    border-color: var(--primary)
+    color: var(--primary)
+  &:disabled
+    color: var(--secondary)
+    border-color: var(--secondary)
 
-.tip-title
-  font-family: var(--font-display)
-  font-size: 0.85rem
-  color: var(--secondary)
-  margin-bottom: 8px
-
-.tip-list
-  list-style: none
-  padding: 0
-  li
-    font-size: 0.8rem
-    color: var(--text-muted)
-    padding: 3px 0
-    &::before
-      content: "▸ "
-      color: var(--secondary)
+.song-result-play
+  font-size: 0.6rem
 
 .playlist-empty
   text-align: center

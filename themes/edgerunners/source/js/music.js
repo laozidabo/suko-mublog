@@ -1,16 +1,15 @@
 /**
  * Edgerunners Theme - Music Player
- * HTML5 audio player with playlist, visualizer, and song request
+ * Search songs by name, play directly, playlist management
  */
 
 (function () {
   'use strict';
 
   // ═══════════════════════════════════════════
-  // DEFAULT PLAYLIST (Night City Radio)
-  // Add songs via the song request form on the /music page
+  // MUSIC API (NetEase Cloud Music proxy)
   // ═══════════════════════════════════════════
-  const DEFAULT_PLAYLIST = [];
+  const API_BASE = 'https://api.injahow.cn/meting';
 
   let playlist = [];
   let currentIndex = 0;
@@ -19,12 +18,43 @@
   let audioCtx = null;
   let analyser = null;
   let visualizerRAF = null;
+  let searchTimer = null;
 
   // ═══════════════════════════════════════════
   // DOM HELPERS
   // ═══════════════════════════════════════════
   function $(sel, parent) {
     return (parent || document).querySelector(sel);
+  }
+
+  function $$(sel, parent) {
+    return Array.from((parent || document).querySelectorAll(sel));
+  }
+
+  // ═══════════════════════════════════════════
+  // MUSIC API - Search & Get URL
+  // ═══════════════════════════════════════════
+  async function searchSongs(keyword) {
+    try {
+      const url = `${API_BASE}?type=search&source=netease&s=${encodeURIComponent(keyword)}`;
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error('Search failed');
+      const data = await resp.json();
+      if (!Array.isArray(data)) return [];
+      return data.slice(0, 10).map(function (item) {
+        return {
+          id: item.id,
+          title: item.title || item.name || 'Unknown',
+          artist: item.author || item.artist || 'Unknown',
+          url: `${API_BASE}?type=url&source=netease&id=${item.id}`,
+          cover: item.pic || item.cover || '',
+          duration: item.duration || 0
+        };
+      });
+    } catch (err) {
+      console.warn('Search failed:', err);
+      return [];
+    }
   }
 
   // ═══════════════════════════════════════════
@@ -47,15 +77,16 @@
       audio = document.createElement('audio');
       audio.id = 'audioPlayer';
       audio.preload = 'auto';
+      audio.crossOrigin = 'anonymous';
       document.body.appendChild(audio);
     }
 
-    // Load saved playlist or use default
+    // Load saved playlist
     try {
       const saved = localStorage.getItem('edgerunners_playlist');
-      playlist = saved ? JSON.parse(saved) : DEFAULT_PLAYLIST.slice();
+      playlist = saved ? JSON.parse(saved) : [];
     } catch (e) {
-      playlist = DEFAULT_PLAYLIST.slice();
+      playlist = [];
     }
 
     // Toggle panel
@@ -67,17 +98,15 @@
     // Play/Pause
     if (playBtn) {
       playBtn.addEventListener('click', function () {
-        if (isPlaying) {
-          pause();
-        } else {
-          play();
-        }
+        if (isPlaying) pause();
+        else play();
       });
     }
 
     // Prev/Next
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
+        if (!playlist.length) return;
         currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
         loadAndPlay();
       });
@@ -85,6 +114,7 @@
 
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
+        if (!playlist.length) return;
         currentIndex = (currentIndex + 1) % playlist.length;
         loadAndPlay();
       });
@@ -99,6 +129,7 @@
     });
 
     audio.addEventListener('ended', function () {
+      if (!playlist.length) return;
       currentIndex = (currentIndex + 1) % playlist.length;
       loadAndPlay();
     });
@@ -109,7 +140,6 @@
       updatePlayButton();
     });
 
-    // Load first track info
     updateMiniDisplay();
   }
 
@@ -117,7 +147,6 @@
     if (!audio || !playlist.length) return;
     const track = playlist[currentIndex];
     if (!track || !track.url) {
-      // Skip tracks without URLs
       currentIndex = (currentIndex + 1) % playlist.length;
       if (currentIndex !== 0) loadAndPlay();
       return;
@@ -127,6 +156,7 @@
     play();
     updateMiniDisplay();
     updateFullPlayerDisplay();
+    renderPlaylist();
   }
 
   function play() {
@@ -159,9 +189,9 @@
   function updateMiniDisplay() {
     const titleEl = $('#miniTitle');
     const artistEl = $('#miniArtist');
-    if (!playlist.length) return;
+    if (!playlist.length || !titleEl) return;
     const track = playlist[currentIndex];
-    if (titleEl) titleEl.textContent = track.title || 'Unknown';
+    titleEl.textContent = track.title || 'Unknown';
     if (artistEl) artistEl.textContent = track.artist || 'Unknown';
   }
 
@@ -169,10 +199,9 @@
   // FULL MUSIC PAGE
   // ═══════════════════════════════════════════
   function initFullPlayer() {
-    const container = $('.music-player-full');
+    const container = $('.music-container');
     if (!container) return;
 
-    // Render playlist
     renderPlaylist();
 
     // Full player controls
@@ -191,6 +220,7 @@
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
+        if (!playlist.length) return;
         currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
         loadAndPlay();
       });
@@ -198,6 +228,7 @@
 
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
+        if (!playlist.length) return;
         currentIndex = (currentIndex + 1) % playlist.length;
         loadAndPlay();
       });
@@ -219,48 +250,129 @@
     }
 
     updateFullPlayerDisplay();
+    initSearchBox();
+  }
 
-    // Song request form
-    const form = $('#songRequestForm');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const titleInput = $('#requestTitle');
-        const artistInput = $('#requestArtist');
-        const urlInput = $('#requestUrl');
-        const status = $('#requestStatus');
+  // ═══════════════════════════════════════════
+  // SEARCH BOX - Type song name, search & play
+  // ═══════════════════════════════════════════
+  function initSearchBox() {
+    const input = $('#songSearchInput');
+    const results = $('#songSearchResults');
+    const searchBtn = $('#songSearchBtn');
+    if (!input || !results) return;
 
-        if (!titleInput || !urlInput) return;
+    // Search on input with debounce
+    input.addEventListener('input', function () {
+      clearTimeout(searchTimer);
+      const keyword = input.value.trim();
+      if (!keyword) {
+        results.innerHTML = '';
+        results.classList.remove('open');
+        return;
+      }
+      searchTimer = setTimeout(function () {
+        doSearch(keyword, results);
+      }, 500);
+    });
 
-        const newTrack = {
-          title: titleInput.value.trim(),
-          artist: (artistInput ? artistInput.value.trim() : '') || 'Unknown',
-          url: urlInput.value.trim(),
-          cover: ''
-        };
+    // Search on Enter
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        clearTimeout(searchTimer);
+        const keyword = input.value.trim();
+        if (keyword) doSearch(keyword, results);
+      }
+    });
 
-        if (!newTrack.url) {
-          if (status) status.textContent = '请输入音频URL';
-          return;
-        }
-
-        playlist.push(newTrack);
-        savePlaylist();
-        renderPlaylist();
-
-        // Reset form
-        titleInput.value = '';
-        if (artistInput) artistInput.value = '';
-        urlInput.value = '';
-        if (status) {
-          status.textContent = '点歌成功！已加入播放列表';
-          status.style.color = '#05d9e8';
-          setTimeout(function () {
-            status.textContent = '';
-          }, 3000);
-        }
+    // Search button click
+    if (searchBtn) {
+      searchBtn.addEventListener('click', function () {
+        clearTimeout(searchTimer);
+        const keyword = input.value.trim();
+        if (keyword) doSearch(keyword, results);
       });
     }
+  }
+
+  async function doSearch(keyword, resultsEl) {
+    resultsEl.innerHTML = '<div class="search-loading">搜索中...</div>';
+    resultsEl.classList.add('open');
+
+    const songs = await searchSongs(keyword);
+
+    if (!songs.length) {
+      resultsEl.innerHTML = '<div class="search-loading">未找到相关歌曲</div>';
+      return;
+    }
+
+    resultsEl.innerHTML = songs.map(function (song, i) {
+      return `
+        <div class="song-result" data-index="${i}">
+          <div class="song-result-info">
+            <span class="song-result-title">${song.title}</span>
+            <span class="song-result-artist">${song.artist}</span>
+          </div>
+          <button class="song-result-play" data-index="${i}" title="播放">▶</button>
+          <button class="song-result-add" data-index="${i}" title="加入列表">+</button>
+        </div>
+      `;
+    }).join('');
+
+    // Store search results for later use
+    resultsEl._songs = songs;
+
+    // Play button - play immediately
+    resultsEl.querySelectorAll('.song-result-play').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.index);
+        const song = songs[idx];
+        // Add to playlist and play
+        playlist.push(song);
+        currentIndex = playlist.length - 1;
+        savePlaylist();
+        loadAndPlay();
+        resultsEl.classList.remove('open');
+        resultsEl.innerHTML = '';
+        const input = $('#songSearchInput');
+        if (input) input.value = '';
+      });
+    });
+
+    // Add button - add to playlist without playing
+    resultsEl.querySelectorAll('.song-result-add').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const idx = parseInt(btn.dataset.index);
+        const song = songs[idx];
+        playlist.push(song);
+        savePlaylist();
+        renderPlaylist();
+        btn.textContent = '✓';
+        btn.disabled = true;
+        setTimeout(function () {
+          btn.textContent = '+';
+          btn.disabled = false;
+        }, 1500);
+      });
+    });
+
+    // Click result row to play
+    resultsEl.querySelectorAll('.song-result').forEach(function (row) {
+      row.addEventListener('click', function () {
+        const idx = parseInt(row.dataset.index);
+        const song = songs[idx];
+        playlist.push(song);
+        currentIndex = playlist.length - 1;
+        savePlaylist();
+        loadAndPlay();
+        resultsEl.classList.remove('open');
+        resultsEl.innerHTML = '';
+        const input = $('#songSearchInput');
+        if (input) input.value = '';
+      });
+    });
   }
 
   function renderPlaylist() {
@@ -268,7 +380,7 @@
     if (!list) return;
 
     if (!playlist.length) {
-      list.innerHTML = '<div class="playlist-empty">播放列表为空，点首歌吧</div>';
+      list.innerHTML = '<div class="playlist-empty">播放列表为空，搜索歌曲名开始点歌</div>';
       return;
     }
 
@@ -390,7 +502,6 @@
         const val = dataArray[dataIdx] / 255;
         const barHeight = val * h;
 
-        // Gradient from cyan to pink
         const r = Math.floor(5 + val * 250);
         const g = Math.floor(217 - val * 175);
         const b = Math.floor(232 - val * 127);

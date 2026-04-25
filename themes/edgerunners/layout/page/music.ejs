@@ -4,7 +4,17 @@
       <span class="page-title-icon">♫</span>
       Night City Radio
     </h1>
-    <p class="page-desc">点一首歌，让 Night City 的霓虹灯为你闪烁</p>
+    <p class="page-desc">输入歌名，即点即播</p>
+  </div>
+
+  <!-- Search Box -->
+  <div class="song-search cyber-card">
+    <div class="song-search-wrap">
+      <span class="search-icon">♫</span>
+      <input type="text" class="song-search-input" id="songSearchInput" placeholder="输入歌曲名搜索..." autofocus>
+      <button class="song-search-btn" id="songSearchBtn">搜索</button>
+    </div>
+    <div class="song-search-results" id="songSearchResults"></div>
   </div>
 
   <!-- Full Player -->
@@ -45,34 +55,7 @@
       <span class="section-bracket">]</span>
     </h2>
     <div class="playlist" id="playlistItems">
-      <div class="playlist-empty">播放列表为空，在下方点首歌吧</div>
-    </div>
-  </div>
-
-  <!-- Song Request -->
-  <div class="song-request cyber-card">
-    <h2 class="request-title">
-      <span class="section-bracket">[</span>
-      点歌
-      <span class="section-bracket">]</span>
-    </h2>
-    <p class="request-desc">输入歌曲信息，添加到播放列表</p>
-    <form class="request-form" id="songRequestForm">
-      <div class="request-fields">
-        <input type="text" class="cyber-input" id="requestTitle" placeholder="歌曲名" required>
-        <input type="text" class="cyber-input" id="requestArtist" placeholder="歌手名">
-        <input type="url" class="cyber-input" id="requestUrl" placeholder="音频 URL (mp3/ogg/wav)" required>
-      </div>
-      <button type="submit" class="cyber-btn primary">添加到播放列表</button>
-      <p class="request-status" id="requestStatus"></p>
-    </form>
-    <div class="request-tips">
-      <p class="tip-title">💡 如何获取音频 URL？</p>
-      <ul class="tip-list">
-        <li>上传 mp3 文件到公开网盘，获取直链</li>
-        <li>使用免费音乐托管服务</li>
-        <li>链接需以 .mp3 / .ogg / .wav 结尾</li>
-      </ul>
+      <div class="playlist-empty">播放列表为空，搜索歌曲名开始点歌</div>
     </div>
   </div>
 </div>
