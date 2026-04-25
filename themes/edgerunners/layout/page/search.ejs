@@ -31,22 +31,5 @@
       <p>输入关键词开始搜索</p>
     </div>
   </div>
+  <p class="search-status" id="searchStatus"></p>
 </div>
-
-<!-- Search Index Data -->
-<script>
-window.searchData = {
-  posts: [
-    <% site.posts.sort('date', -1).forEach(function(post) { %>
-    {
-      "title": "<%- escape_js(post.title) %>",
-      "url": "<%- url_for(post.path) %>",
-      "date": "<%= date(post.date, 'YYYY-MM-DD') %>",
-      "content": "<%- escape_js(strip_html(post.content).substring(0, 500)) %>",
-      "tags": [<% if (post.tags) { post.tags.forEach(function(tag, i) { %>"<%= tag.name %>"<%= i < post.tags.length - 1 ? ',' : '' %><% }) } %>],
-      "categories": [<% if (post.categories) { post.categories.forEach(function(cat, i) { %>"<%= cat.name %>"<%= i < post.categories.length - 1 ? ',' : '' %><% }) } %>]
-    },
-    <% }) %>
-  ]
-};
-</script>
