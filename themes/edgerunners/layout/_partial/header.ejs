@@ -1,0 +1,33 @@
+<header class="cyber-header" id="cyberHeader">
+  <div class="header-container">
+    <!-- Logo -->
+    <a href="/" class="cyber-logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text" data-text="<%= config.title %>"><%= config.title %></span>
+      <span class="logo-bracket">]</span>
+    </a>
+
+    <!-- Nav Toggle (Mobile) -->
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="cyber-nav" id="cyberNav">
+      <% for (var i in theme.menu) { %>
+        <a href="<%= theme.menu[i] %>" class="nav-link <%= is_current(theme.menu[i]) ? 'active' : '' %>">
+          <span class="nav-link-text"><%= i %></span>
+          <span class="nav-link-glitch" data-text="<%= i %>"><%= i %></span>
+        </a>
+      <% } %>
+      <a href="/search" class="nav-link nav-search">
+        <span class="nav-link-text">搜索</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Header Decorative Line -->
+  <div class="header-line"></div>
+</header>

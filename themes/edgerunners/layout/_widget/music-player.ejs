@@ -1,0 +1,24 @@
+<!-- Mini Music Player (floating) -->
+<div class="mini-player" id="miniPlayer">
+  <button class="mini-player-toggle" id="miniPlayerToggle" title="音乐播放器">
+    <span class="mini-player-icon">♫</span>
+  </button>
+  <div class="mini-player-panel" id="miniPlayerPanel">
+    <div class="mini-player-info">
+      <span class="mini-player-title" id="miniTitle">Night City Radio</span>
+      <span class="mini-player-artist" id="miniArtist">等待点歌...</span>
+    </div>
+    <div class="mini-player-controls">
+      <button class="mini-ctrl" id="miniPrev">⏮</button>
+      <button class="mini-ctrl mini-play" id="miniPlay">▶</button>
+      <button class="mini-ctrl" id="miniNext">⏭</button>
+    </div>
+    <div class="mini-progress">
+      <div class="mini-progress-bar">
+        <div class="mini-progress-fill" id="miniProgress"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<audio id="audioPlayer" preload="auto"></audio>

@@ -1,0 +1,18 @@
+<div class="tags-container">
+  <div class="page-header cyber-card">
+    <h1 class="page-title">
+      <span class="page-title-icon">#</span>
+      所有标签
+    </h1>
+    <p class="page-desc">共 <%= site.tags.length %> 个标签</p>
+  </div>
+
+  <div class="tags-cloud cyber-card">
+    <% site.tags.sort('name').forEach(function(tag) { %>
+      <a href="<%- url_for(tag.path) %>" class="tag-cloud-item">
+        <span class="tag-name">#<%= tag.name %></span>
+        <span class="tag-count"><%= tag.length %></span>
+      </a>
+    <% }) %>
+  </div>
+</div>

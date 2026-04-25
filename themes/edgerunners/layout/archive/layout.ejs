@@ -1,0 +1,64 @@
+<div class="archive-container">
+  <div class="page-header cyber-card">
+    <h1 class="page-title">
+      <span class="page-title-icon">◈</span>
+      博客归档
+      <span class="page-title-count">[<%= site.posts.length %>]</span>
+    </h1>
+    <p class="page-desc">在 Night City 的记忆数据库中检索</p>
+  </div>
+
+  <!-- Tag Filter -->
+  <div class="archive-filters">
+    <a href="/archives" class="filter-btn active">全部</a>
+    <a href="/tags" class="filter-btn">标签</a>
+    <a href="/categories" class="filter-btn">分类</a>
+  </div>
+
+  <!-- Posts List -->
+  <div class="archive-list">
+    <% var currentYear = ''; %>
+    <% page.posts.sort('date', -1).forEach(function(post) { %>
+      <% var year = date(post.date, 'YYYY'); %>
+      <% if (year !== currentYear) { %>
+        <% currentYear = year; %>
+        <div class="archive-year">
+          <span class="archive-year-text"><%= year %></span>
+          <span class="archive-year-line"></span>
+        </div>
+      <% } %>
+      <article class="archive-item">
+        <div class="archive-item-date">
+          <span class="archive-month"><%= date(post.date, 'MM') %></span>
+          <span class="archive-day"><%= date(post.date, 'DD') %></span>
+        </div>
+        <div class="archive-item-content">
+          <h3 class="archive-item-title">
+            <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+          </h3>
+          <div class="archive-item-meta">
+            <% if (post.categories && post.categories.length) { %>
+              <span class="archive-cat"><%= post.categories.first().name %></span>
+            <% } %>
+            <% if (post.tags && post.tags.length) { %>
+              <% post.tags.limit(3).forEach(function(tag) { %>
+                <a href="<%- url_for(tag.path) %>" class="archive-tag">#<%= tag.name %></a>
+              <% }) %>
+            <% } %>
+          </div>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+
+  <!-- Pagination -->
+  <% if (page.total > 1) { %>
+    <div class="pagination">
+      <%- paginator({
+        prev_text: '← 上一页',
+        next_text: '下一页 →',
+        mid_size: 2
+      }) %>
+    </div>
+  <% } %>
+</div>

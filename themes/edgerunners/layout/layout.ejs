@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <%- partial('_partial/head') %>
+</head>
+<body class="cyberpunk-bg">
+  <!-- Scan Lines Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Glitch Effect Overlay -->
+  <div class="glitch-overlay" id="glitchOverlay"></div>
+
+  <!-- Navigation -->
+  <%- partial('_partial/header') %>
+
+  <!-- Main Content -->
+  <main class="main-container" id="mainContent">
+    <%- body %>
+  </main>
+
+  <!-- Sidebar -->
+  <%- partial('_partial/sidebar') %>
+
+  <!-- Footer -->
+  <%- partial('_partial/footer') %>
+
+  <!-- Music Player -->
+  <%- partial('_widget/music-player') %>
+
+  <!-- Weather Widget -->
+  <%- partial('_widget/weather') %>
+
+  <!-- Back to Top -->
+  <button class="cyber-btn-top" id="backToTop" title="回顶部">
+    <span class="cyber-btn-top-icon">▲</span>
+  </button>
+
+  <!-- Scripts -->
+  <%- partial('_partial/scripts') %>
+</body>
+</html>

@@ -1,0 +1,51 @@
+# Edgerunners Theme - Cyberpunk 2077 x Rebecca
+# Theme Configuration
+
+# Site Info
+subtitle: "WAKE UP, SAMURAI"
+description: "We got a city to burn."
+
+# Navigation
+menu:
+  首页: /
+  博客: /archives
+  项目: /projects
+  图片: /photos
+  关于: /about
+  点歌: /music
+
+# Colors - Rebecca's Palette
+colors:
+  primary: "#ff2a6d"       # Rebecca's Pink
+  secondary: "#05d9e8"     # Cyber Cyan
+  accent: "#d1f7ff"        # Ice Blue
+  warning: "#f5e642"       # Cyber Yellow
+  dark: "#0a0a0f"          # Night City Dark
+  darker: "#050508"        # Void
+  card: "rgba(10, 10, 20, 0.85)"
+  cardBorder: "rgba(255, 42, 109, 0.3)"
+  text: "#e0e0e0"
+  textMuted: "#7b888e"
+
+# Weather cities
+weather:
+  - name: "大荔县"
+    query: "Dali,Shaanxi"
+  - name: "韩城市"
+    query: "Hancheng,Shaanxi"
+
+# Social Links
+social:
+  github: "https://github.com/laozidabo"
+
+# Comments (giscus)
+comments:
+  enable: false
+  repo: ""
+  repoId: ""
+  category: ""
+  categoryId: ""
+
+# Footer
+footer: "MADE WITH LOVE AND CYBERNETIC IMPLANTS"
+copyright: "EDGERUNNERS 2077"

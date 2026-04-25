@@ -1,0 +1,122 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-glitch-title">
+      <h1 class="hero-title" data-text="<%= config.title %>"><%= config.title %></h1>
+    </div>
+    <p class="hero-subtitle"><%= theme.subtitle %></p>
+    <p class="hero-description"><%= theme.description %></p>
+
+    <!-- Hero Stats Bar -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value"><%= site.posts.length %></span>
+        <span class="hero-stat-label">ARTICLES</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value"><%= site.tags.length %></span>
+        <span class="hero-stat-label">TAGS</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-icon">◈</span>
+        <span class="hero-stat-value" id="dayCount">0</span>
+        <span class="hero-stat-label">DAYS ONLINE</span>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="hero-cta">
+      <a href="/archives" class="cyber-btn primary">
+        <span class="cyber-btn-text">进入博客</span>
+        <span class="cyber-btn-glitch" data-text="进入博客">进入博客</span>
+      </a>
+      <a href="/about" class="cyber-btn secondary">
+        <span class="cyber-btn-text">关于我</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Hero Decorative -->
+  <div class="hero-deco">
+    <div class="hero-circle"></div>
+    <div class="hero-lines">
+      <div class="hline hline-1"></div>
+      <div class="hline hline-2"></div>
+      <div class="hline hline-3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts -->
+<section class="section-container">
+  <div class="section-header">
+    <h2 class="section-title">
+      <span class="section-title-bracket">[</span>
+      <span class="section-title-text">最新文章</span>
+      <span class="section-title-bracket">]</span>
+    </h2>
+    <a href="/archives" class="section-more">查看全部 →</a>
+  </div>
+
+  <div class="posts-grid">
+    <% site.posts.sort('date', -1).limit(6).forEach(function(post) { %>
+      <article class="post-card cyber-card">
+        <div class="post-card-header">
+          <span class="post-date">
+            <span class="post-date-icon">◷</span>
+            <%= date(post.date, 'YYYY-MM-DD') %>
+          </span>
+          <% if (post.categories && post.categories.length) { %>
+            <span class="post-category">
+              <%= post.categories.first().name %>
+            </span>
+          <% } %>
+        </div>
+        <h3 class="post-card-title">
+          <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+        </h3>
+        <p class="post-card-excerpt">
+          <%- strip_html(post.excerpt || post.content).substring(0, 150) %>...
+        </p>
+        <div class="post-card-footer">
+          <div class="post-tags">
+            <% if (post.tags && post.tags.length) { %>
+              <% post.tags.limit(3).forEach(function(tag) { %>
+                <a href="<%- url_for(tag.path) %>" class="post-tag">#<%= tag.name %></a>
+              <% }) %>
+            <% } %>
+          </div>
+          <a href="<%- url_for(post.path) %>" class="post-read-more">READ MORE →</a>
+        </div>
+      </article>
+    <% }) %>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="section-container features-section">
+  <div class="features-grid">
+    <a href="/projects" class="feature-card cyber-card">
+      <div class="feature-icon">⚙</div>
+      <h3 class="feature-title">项目展示</h3>
+      <p class="feature-desc">我的代码与创造</p>
+    </a>
+    <a href="/photos" class="feature-card cyber-card">
+      <div class="feature-icon">📷</div>
+      <h3 class="feature-title">图片墙</h3>
+      <p class="feature-desc">记录瞬间</p>
+    </a>
+    <a href="/music" class="feature-card cyber-card">
+      <div class="feature-icon">♫</div>
+      <h3 class="feature-title">点歌台</h3>
+      <p class="feature-desc">Night City Radio</p>
+    </a>
+    <a href="/search" class="feature-card cyber-card">
+      <div class="feature-icon">🔍</div>
+      <h3 class="feature-title">搜索</h3>
+      <p class="feature-desc">寻找记忆碎片</p>
+    </a>
+  </div>
+</section>

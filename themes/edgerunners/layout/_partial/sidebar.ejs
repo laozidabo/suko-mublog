@@ -1,0 +1,93 @@
+<aside class="cyber-sidebar" id="sidebar">
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="侧边栏">
+    <span>◁</span>
+  </button>
+
+  <!-- User Card -->
+  <div class="sidebar-card user-card">
+    <div class="user-avatar">
+      <div class="avatar-frame">
+        <img src="/images/avatar.svg" alt="Avatar" class="avatar-img">
+      </div>
+      <div class="avatar-status">ONLINE</div>
+    </div>
+    <h3 class="user-name"><%= config.author %></h3>
+    <p class="user-bio"><%= theme.description %></p>
+    <div class="user-stats">
+      <div class="stat">
+        <span class="stat-num"><%= site.posts.length %></span>
+        <span class="stat-label">POSTS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><%= site.tags.length %></span>
+        <span class="stat-label">TAGS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num"><%= site.categories.length %></span>
+        <span class="stat-label">CATS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rebecca Card -->
+  <div class="sidebar-card rebecca-card">
+    <div class="rebecca-header">
+      <span class="rebecca-tag">FAV CHARACTER</span>
+    </div>
+    <div class="rebecca-art">
+      <pre class="rebecca-ascii">
+  ╔═══════════╗
+  ║  REBECCA  ║
+  ║  EDGERUNNER
+  ╚═══════════╝
+      </pre>
+    </div>
+    <p class="rebecca-quote">"Don't mess with me, gonk!"</p>
+  </div>
+
+  <!-- Recent Posts -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      最近文章
+    </h4>
+    <ul class="recent-posts">
+      <% site.posts.sort('date', -1).limit(5).forEach(function(post) { %>
+        <li class="recent-post-item">
+          <a href="<%- url_for(post.path) %>" class="recent-post-link">
+            <span class="recent-post-date"><%= date(post.date, 'MM/DD') %></span>
+            <span class="recent-post-title"><%= post.title %></span>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <!-- Tags -->
+  <div class="sidebar-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      标签
+    </h4>
+    <div class="tag-cloud">
+      <% site.tags.sort('name').forEach(function(tag) { %>
+        <a href="<%- url_for(tag.path) %>" class="tag-item">
+          #<%= tag.name %>
+          <span class="tag-count"><%= tag.length %></span>
+        </a>
+      <% }) %>
+    </div>
+  </div>
+
+  <!-- Edgerunners Quotes -->
+  <div class="sidebar-card quote-card">
+    <h4 class="card-title">
+      <span class="card-title-icon">▸</span>
+      EDGERUNNERS语录
+    </h4>
+    <div class="sidebar-quote" id="sidebarQuote">
+      <p class="sq-text">"In the end, you have to be willing to sacrifice everything for your dream."</p>
+      <p class="sq-author">— DAVID MARTINEZ</p>
+    </div>
+  </div>
+</aside>

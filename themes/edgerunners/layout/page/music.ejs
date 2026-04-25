@@ -1,0 +1,80 @@
+<div class="music-container">
+  <div class="page-header cyber-card">
+    <h1 class="page-title">
+      <span class="page-title-icon">♫</span>
+      Night City Radio
+    </h1>
+    <p class="page-desc">点一首歌，让 Night City 的霓虹灯为你闪烁</p>
+  </div>
+
+  <!-- Now Playing -->
+  <div class="now-playing cyber-card" id="nowPlaying">
+    <div class="np-visualizer">
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+      <div class="np-bar"></div>
+    </div>
+    <div class="np-info">
+      <span class="np-label">NOW PLAYING</span>
+      <h3 class="np-title" id="npTitle">等待点歌...</h3>
+      <p class="np-artist" id="npArtist">Night City Radio</p>
+    </div>
+    <div class="np-controls">
+      <button class="np-btn" id="npPrev" title="上一首">⏮</button>
+      <button class="np-btn np-play" id="npPlay" title="播放/暂停">▶</button>
+      <button class="np-btn" id="npNext" title="下一首">⏭</button>
+    </div>
+    <div class="np-progress">
+      <div class="np-progress-bar">
+        <div class="np-progress-fill" id="npProgress"></div>
+      </div>
+      <div class="np-time">
+        <span id="npCurrentTime">0:00</span>
+        <span id="npTotalTime">0:00</span>
+      </div>
+    </div>
+    <div class="np-volume">
+      <span class="volume-icon">🔊</span>
+      <input type="range" class="volume-slider" id="npVolume" min="0" max="100" value="80">
+    </div>
+  </div>
+
+  <!-- Playlist -->
+  <div class="playlist-section cyber-card">
+    <h2 class="playlist-title">
+      <span class="section-bracket">[</span>
+      播放列表
+      <span class="section-bracket">]</span>
+    </h2>
+    <div class="playlist" id="playlist">
+      <div class="playlist-item" data-src="/music/sample.mp3" data-title="I Really Want to Stay at Your House" data-artist="Rosa Walton">
+        <span class="playlist-num">01</span>
+        <div class="playlist-info">
+          <span class="playlist-song">I Really Want to Stay at Your House</span>
+          <span class="playlist-artist">Rosa Walton</span>
+        </div>
+        <span class="playlist-duration">4:05</span>
+      </div>
+      <!-- Add more songs -->
+    </div>
+  </div>
+
+  <!-- Song Request -->
+  <div class="song-request cyber-card">
+    <h2 class="request-title">
+      <span class="section-bracket">[</span>
+      点歌
+      <span class="section-bracket">]</span>
+    </h2>
+    <p class="request-desc">输入歌曲名或链接，我会添加到播放列表</p>
+    <form class="request-form" id="songRequestForm">
+      <input type="text" class="cyber-input" id="songInput" placeholder="输入歌曲名或 URL...">
+      <button type="submit" class="cyber-btn primary">点歌</button>
+    </form>
+  </div>
+</div>

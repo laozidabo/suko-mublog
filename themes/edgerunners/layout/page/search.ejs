@@ -1,0 +1,52 @@
+<div class="search-container">
+  <div class="page-header cyber-card">
+    <h1 class="page-title">
+      <span class="page-title-icon">🔍</span>
+      搜索
+    </h1>
+    <p class="page-desc">在 Night City 的数据库中检索记忆碎片</p>
+  </div>
+
+  <!-- Search Box -->
+  <div class="search-box cyber-card">
+    <div class="search-input-wrap">
+      <span class="search-prefix">SEARCH://</span>
+      <input type="text" class="search-input cyber-input" id="searchInput" placeholder="输入关键词..." autofocus>
+      <button class="search-btn" id="searchBtn">GO</button>
+    </div>
+    <div class="search-filters">
+      <label class="search-filter">
+        <input type="checkbox" checked> 文章
+      </label>
+      <label class="search-filter">
+        <input type="checkbox" checked> 标签
+      </label>
+    </div>
+  </div>
+
+  <!-- Search Results -->
+  <div class="search-results" id="searchResults">
+    <div class="search-empty">
+      <span class="search-empty-icon">◈</span>
+      <p>输入关键词开始搜索</p>
+    </div>
+  </div>
+</div>
+
+<!-- Search Index Data -->
+<script>
+window.searchData = {
+  posts: [
+    <% site.posts.sort('date', -1).forEach(function(post) { %>
+    {
+      "title": "<%- escape_js(post.title) %>",
+      "url": "<%- url_for(post.path) %>",
+      "date": "<%= date(post.date, 'YYYY-MM-DD') %>",
+      "content": "<%- escape_js(strip_html(post.content).substring(0, 500)) %>",
+      "tags": [<% if (post.tags) { post.tags.forEach(function(tag, i) { %>"<%= tag.name %>"<%= i < post.tags.length - 1 ? ',' : '' %><% }) } %>],
+      "categories": [<% if (post.categories) { post.categories.forEach(function(cat, i) { %>"<%= cat.name %>"<%= i < post.categories.length - 1 ? ',' : '' %><% }) } %>]
+    },
+    <% }) %>
+  ]
+};
+</script>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="8" fill="#1a1a2e"/>
+  <text x="32" y="44" text-anchor="middle" font-family="monospace" font-size="36" font-weight="bold" fill="#ff2a6d">E</text>
+  <rect x="4" y="4" width="56" height="56" rx="6" fill="none" stroke="#05d9e8" stroke-width="1.5" opacity="0.6"/>
+  <line x1="4" y1="16" x2="60" y2="16" stroke="#05d9e8" stroke-width="0.5" opacity="0.3"/>
+  <line x1="4" y1="48" x2="60" y2="48" stroke="#05d9e8" stroke-width="0.5" opacity="0.3"/>
+</svg>

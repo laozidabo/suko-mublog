@@ -1,0 +1,90 @@
+<article class="post-container cyber-card">
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="post-meta-item">
+        <span class="meta-icon">◷</span>
+        <time datetime="<%= date(page.date, 'YYYY-MM-DD') %>"><%= date(page.date, 'YYYY年MM月DD日') %></time>
+      </span>
+      <% if (page.categories && page.categories.length) { %>
+        <span class="post-meta-item">
+          <span class="meta-icon">▸</span>
+          <% page.categories.forEach(function(cat, i) { %>
+            <a href="<%- url_for(cat.path) %>"><%= cat.name %></a><%= i < page.categories.length - 1 ? ' / ' : '' %>
+          <% }) %>
+        </span>
+      <% } %>
+      <span class="post-meta-item">
+        <span class="meta-icon">◈</span>
+        <span class="word-count"><%= strip_html(page.content).length %> 字</span>
+      </span>
+    </div>
+
+    <h1 class="post-title" data-text="<%= page.title %>"><%= page.title %></h1>
+
+    <% if (page.tags && page.tags.length) { %>
+      <div class="post-tags-header">
+        <% page.tags.forEach(function(tag) { %>
+          <a href="<%- url_for(tag.path) %>" class="post-tag">#<%= tag.name %></a>
+        <% }) %>
+      </div>
+    <% } %>
+  </header>
+
+  <!-- Post Content -->
+  <div class="post-content" id="postContent">
+    <%- page.content %>
+  </div>
+
+  <!-- Post Footer -->
+  <footer class="post-footer">
+    <!-- Post Navigation -->
+    <div class="post-nav">
+      <% if (page.prev) { %>
+        <a href="<%- url_for(page.prev.path) %>" class="post-nav-link prev">
+          <span class="post-nav-label">← 上一篇</span>
+          <span class="post-nav-title"><%= page.prev.title %></span>
+        </a>
+      <% } %>
+      <% if (page.next) { %>
+        <a href="<%- url_for(page.next.path) %>" class="post-nav-link next">
+          <span class="post-nav-label">下一篇 →</span>
+          <span class="post-nav-title"><%= page.next.title %></span>
+        </a>
+      <% } %>
+    </div>
+
+    <!-- Share -->
+    <div class="post-share">
+      <span class="share-label">分享：</span>
+      <button class="share-btn" onclick="copyLink()" title="复制链接">复制链接</button>
+    </div>
+  </footer>
+</article>
+
+<!-- Table of Contents -->
+<% if (page.toc !== false) { %>
+<nav class="toc-container" id="tocContainer">
+  <div class="toc-header">
+    <span class="toc-title">目录</span>
+    <button class="toc-toggle" id="tocToggle">▼</button>
+  </div>
+  <div class="toc-content" id="tocContent">
+    <%- toc(page.content, {list_number: true, max_depth: 3}) %>
+  </div>
+</nav>
+<% } %>
+
+<!-- Comments -->
+<% if (theme.comments && theme.comments.enable) { %>
+<section class="comments-section">
+  <div class="comments-header">
+    <h3 class="comments-title">
+      <span class="comments-title-bracket">[</span>
+      评论
+      <span class="comments-title-bracket">]</span>
+    </h3>
+  </div>
+  <div id="giscus-container"></div>
+</section>
+<% } %>
