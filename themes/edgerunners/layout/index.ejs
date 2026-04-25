@@ -28,11 +28,11 @@
 
     <!-- CTA -->
     <div class="hero-cta">
-      <a href="/archives" class="cyber-btn primary">
+      <a href="<%- url_for('/archives') %>" class="cyber-btn primary">
         <span class="cyber-btn-text">进入博客</span>
         <span class="cyber-btn-glitch" data-text="进入博客">进入博客</span>
       </a>
-      <a href="/about" class="cyber-btn secondary">
+      <a href="<%- url_for('/about') %>" class="cyber-btn secondary">
         <span class="cyber-btn-text">关于我</span>
       </a>
     </div>
@@ -57,7 +57,7 @@
       <span class="section-title-text">最新文章</span>
       <span class="section-title-bracket">]</span>
     </h2>
-    <a href="/archives" class="section-more">查看全部 →</a>
+    <a href="<%- url_for('/archives') %>" class="section-more">查看全部 →</a>
   </div>
 
   <div class="posts-grid">
@@ -98,22 +98,22 @@
 <!-- Features Section -->
 <section class="section-container features-section">
   <div class="features-grid">
-    <a href="/projects" class="feature-card cyber-card">
+    <a href="<%- url_for('/projects') %>" class="feature-card cyber-card">
       <div class="feature-icon">⚙</div>
       <h3 class="feature-title">项目展示</h3>
       <p class="feature-desc">我的代码与创造</p>
     </a>
-    <a href="/photos" class="feature-card cyber-card">
+    <a href="<%- url_for('/photos') %>" class="feature-card cyber-card">
       <div class="feature-icon">📷</div>
       <h3 class="feature-title">图片墙</h3>
       <p class="feature-desc">记录瞬间</p>
     </a>
-    <a href="/music" class="feature-card cyber-card">
+    <a href="<%- url_for('/music') %>" class="feature-card cyber-card">
       <div class="feature-icon">♫</div>
       <h3 class="feature-title">点歌台</h3>
       <p class="feature-desc">Night City Radio</p>
     </a>
-    <a href="/search" class="feature-card cyber-card">
+    <a href="<%- url_for('/search') %>" class="feature-card cyber-card">
       <div class="feature-icon">🔍</div>
       <h3 class="feature-title">搜索</h3>
       <p class="feature-desc">寻找记忆碎片</p>

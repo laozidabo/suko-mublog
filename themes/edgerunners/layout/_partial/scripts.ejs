@@ -1,16 +1,16 @@
 <!-- Main Script -->
-<script src="/js/main.js"></script>
+<script src="<%- url_for('/js/main.js') %>"></script>
 
 <!-- Search Script (only on search page) -->
 <% if (is_current('/search')) { %>
-<script src="/js/search.js"></script>
+<script src="<%- url_for('/js/search.js') %>"></script>
 <% } %>
 
 <!-- Page-specific Scripts -->
 <% if (is_current('/music')) { %>
-<script src="/js/music.js"></script>
+<script src="<%- url_for('/js/music.js') %>"></script>
 <% } %>
 
 <% if (is_current('/photos')) { %>
-<script src="/js/photos.js"></script>
+<script src="<%- url_for('/js/photos.js') %>"></script>
 <% } %>
