@@ -1,5 +1,6 @@
 ---
 title: 搜索
+layout: page
 type: search
 date: 2025-01-01 00:00:00
 ---

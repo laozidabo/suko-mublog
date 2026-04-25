@@ -1,5 +1,6 @@
 ---
 title: Night City Radio
+layout: page
 type: music
 date: 2025-01-01 00:00:00
 ---

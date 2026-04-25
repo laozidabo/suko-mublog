@@ -1,5 +1,6 @@
 ---
 title: 项目展示
+layout: page
 type: projects
 date: 2025-01-01 00:00:00
 ---

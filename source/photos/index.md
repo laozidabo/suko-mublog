@@ -1,5 +1,6 @@
 ---
 title: 图片墙
+layout: page
 type: photos
 date: 2025-01-01 00:00:00
 ---

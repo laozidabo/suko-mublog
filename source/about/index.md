@@ -1,5 +1,6 @@
 ---
 title: 关于我
+layout: page
 type: about
 date: 2025-01-01 00:00:00
 ---
